@@ -1,5 +1,5 @@
 ## ProActRail
-ProActRail is a Streamlit application for monitoring and predicting equipment failure in railway systems. It simulates and visualizes real-time data, including sensor readings and GPS coordinates, to detect potential oil leaks and other issues. The application uses machine learning models to predict equipment failure and sends alerts to help prevent accidents.
+ProActRail is a Streamlit application for monitoring and predicting equipment failure in railway systems. It simulates and visualizes real-time data, including sensor readings and GPS coordinates, to detect potential oil leaks and other issues. The application uses a machine learning model to predict equipment failure and sends alerts to help prevent accidents.
 
 # Features
 
