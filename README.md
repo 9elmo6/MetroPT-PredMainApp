@@ -29,6 +29,17 @@ pip install -r requirements.txt
 ```
 # Usage
 
+Note: a Big Query database is required due to the big size of the dataset available.
+
+## Cloud Setup
+
+1. Create a new storage Bucket
+2. upload the dataset found here - https://zenodo.org/record/7766691#.ZCz3eezMJGM
+3. Go to the Big Query tab and create a new data from google storage
+4. Choose "auto-detect" schema.
+5. Use the project name, dataset name, and table name in the app code to be able to query the required data.
+
+
 Set up your Google Cloud credentials by following the instructions in the Google Cloud documentation.
 Export the path to your Google Cloud credentials JSON file:
 
