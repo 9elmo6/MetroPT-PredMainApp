@@ -26,32 +26,32 @@ st.set_page_config(
     layout = 'wide'
 )
 
-model = load_model("models/first.h5")
+model = load_model("models/model2/secondmodel.h5")
 
 st.title('Predictive maintenance dashboard')
 DATE_COLUMN = 'timestamp'
-DATA_URL = ('data/dataset_train.csv')
+#DATA_URL = ('data/dataset_train.csv')
 
-project_id = "Add Project name" #change here
-topic_id = "Add Pub/sub topic" #change here
+project_id = "metroPT-Pdm" #change here
+topic_id = "APU" #change here
 
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(project_id, topic_id)
 
 #@st.cache_resource 
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    lowercase = lambda x: str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return data
-data = load_data(10000)
+#def load_data(nrows):
+ #   data = pd.read_csv(DATA_URL, nrows=nrows)
+    #data.rename(lowercase, axis='columns', inplace=True)
+    #data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+  #  lowercase = lambda x: str(x).lower()
+    #return data
+#data = load_data(10000)
 
 def get_data_from_bigquery():
     client = bigquery.Client()
     query = """
         SELECT *
-        FROM `project-id.Dataset.tablename`
+        FROM `metroPT-PdM.metroPT.historyData`
         
         ORDER BY timestamp DESC
         LIMIT 100
@@ -59,6 +59,7 @@ def get_data_from_bigquery():
     query_job = client.query(query)
     data = query_job.result().to_dataframe()
     return data
+data = get_data_from_bigquery()
 def generate_live_data(column, n_points=1):
     mean = data[column].mean()
     std = data[column].std()
@@ -72,7 +73,7 @@ def get_filtered_data_from_bigquery(start_date, end_date):
     client = bigquery.Client()
     query = f"""
         SELECT *
-        FROM `project-id.Dataset.tablename`
+        FROM `metroPT-PdM.metroPT.historyData`
         WHERE timestamp >= '{start_date}' AND timestamp <= '{end_date}'
         ORDER BY timestamp
     """
