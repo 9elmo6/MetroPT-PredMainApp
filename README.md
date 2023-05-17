@@ -31,6 +31,14 @@ pip install -r requirements.txt
 
 Note: a Big Query database is required due to the big size of the dataset available.
 
+## Enviroment setup
+It is recommended to setup a virtual enviroment before installing the python packages to avoid any verison conflicts 
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
 ## Cloud Setup
 
 1. Create a new storage Bucket
@@ -43,9 +51,11 @@ Note: a Big Query database is required due to the big size of the dataset availa
 Set up your Google Cloud credentials by following the instructions in the Google Cloud documentation.
 Export the path to your Google Cloud credentials JSON file:
 
+
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/credentials.json"
 ```
+
 Run the Streamlit application:
 ```bash
 streamlit run streamlit-app.py
